@@ -1,0 +1,404 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact|Express Gold Limited (UG)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Favicon (Browser tab icon) -->
+      <link rel="icon" type="image/png" href="{% static 'gold_trade/img/6.jpg' %}" />
+
+      <!-- Open Graph meta tags for link sharing preview -->
+      <meta property="og:title" content="Express Gold Limited (UG)" />
+      <meta property="og:description" content="Your Trusted Partner in Gold Mining and Trading" />
+      <meta property="og:image" content="https://yourdomain.com/static/gold_trade/img/6.jpg" />
+      <meta property="og:url" content="https://yourdomain.com/" />
+      <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+  /* ===========================
+      NAVBAR STYLES
+  =========================== */
+  .navbar-nav .nav-link {
+    position: relative;
+    color: #000000;
+    padding: 8px 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #d4af37;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #d4af37;
+  }
+
+  .navbar-nav .nav-link:hover::after {
+    width: 80%;
+  }
+
+  .top-contact-bar {
+    font-size: 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    transition: top 0.3s ease, padding 0.3s ease;
+  }
+
+  .top-contact-bar .contact-item {
+    color: #f5f5f5;
+    padding: 1px 10px;
+  }
+
+  .gold-icon {
+    color: gold;
+    margin-right: 6px;
+  }
+
+  .shrink-contact-bar {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 0.9em;
+  }
+
+  .navbar {
+    margin-top: 30px;
+    transition: padding 0.3s ease, height 0.3s ease;
+  }
+
+  .navbar-expand-lg {
+    padding: 20px 0;
+  }
+
+  .navbar.shrink {
+    padding: 10px 0;
+    transition: padding 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      margin-top: 30px;
+    }
+
+    .top-contact-bar {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
+
+/* =========================== 
+    CONTACT BANNER CONTAINER
+  =========================== */
+  .contact-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px 20px;
+  border-radius: 10px;
+  color: #fff;
+  width: 100%;
+  margin-top: 150px; /* Default spacing for larger screens */
+}
+
+.contact-banner .banner-left,
+.contact-banner .banner-right {
+  flex: 1;
+  min-height: 300px;
+}
+
+.banner-left {
+  background: #000;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner-left h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.banner-left p {
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+.banner-right {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.banner-right iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+/* =========================== 
+    FORM SECTION
+  =========================== */
+.form-section {
+  padding: 40px 20px;
+  background: #f4f4f4;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+.form-overlay {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.form-overlay input,
+.form-overlay textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-overlay button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: goldenrod;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-overlay button:hover {
+  background: #fff;
+  color: goldenrod;
+  border: 1px solid goldenrod;
+}
+
+/* =========================== 
+    RESPONSIVE DESIGN
+  =========================== */
+@media (max-width: 768px) {
+  .contact-banner {
+    margin-top: 120px; /* Reduce margin on smaller screens */
+    flex-direction: column;
+  }
+
+  .form-overlay {
+    width: 90%;
+  }
+
+  .banner-right iframe {
+    height: 400px; /* Increase height on smaller screens */
+  }
+}
+
+</style>
+
+  
+</head>
+<body>
+
+<!-- Navbar Start -->
+<!-- Top Contact Bar -->
+<div class="top-contact-bar bg-dark text-light py-1">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+    <div class="contact-item">
+        <i class="fas fa-phone-alt gold-icon"></i> 039 3102928
+    </div>
+    <div class="contact-item">
+        <i class="fas fa-envelope gold-icon"></i> Expressgoldlimited@gmail.com
+    </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light shadow">
+  <div class="container d-flex justify-content-between align-items-center">
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}" style="gap: 10px;">
+      <img src="{% static 'gold_trade/img/6.jpg' %}" alt="Logo" style="height: 40px; width: auto;">
+      <div style="display: flex; flex-direction: column;">
+        <strong>Express Gold Limited (UG)</strong>
+        <small style="font-size: 12px; color: #d4af37;">Your Trusted Partner in Gold Mining and Trading</small>
+      </div>
+    </a>
+
+    <div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" style="margin: 0 auto;">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'product' %}">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </div>      
+  </div>
+</nav>
+<!-- Navbar End -->
+
+
+
+
+<!-- Contact-us content start -->
+<section class="contact-banner">
+  <!-- LEFT SIDE (Text content) -->
+  <div class="banner-left">
+    <h2 style="color: goldenrod; font-size: 2rem; margin-bottom: 10px;">Contact Us</h2>
+    <p style="margin-bottom: 20px; font-size: 1rem;">
+      !!For more help, feel free and free the form below, we will get to you in no time.
+    </p>
+
+    <div style="margin-top: 20px;">
+      <h3 style="color: goldenrod; margin-bottom: 5px;">Express Gold Limited (UG)</h3>
+      <p style="margin: 4px 0;"><strong>Phone:</strong>+256 712 345678</p>
+      <p style="margin: 4px 0;"><strong>Email:</strong> <a href="mailto:info@expressgold.ug" style="color: goldenrod;">info@expressgold.ug</a></p>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <h4 style="color: goldenrod; margin-bottom: 5px;">Address</h4>
+      <p style="margin: 4px 0;">Kampala</p>
+      <p style="margin: 4px 0;">Muyenga - Kiwafu Road</p>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE (Google Map) -->
+  <div class="banner-right">
+    <iframe
+      width="100%"
+      height="100%"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen
+      src="https://maps.google.com/maps?q=Muyenga%20-%20Kiwafu%20Road,%20Kampala%20Uganda&z=15&output=embed"
+    ></iframe>
+  </div>
+</section>
+
+<!-- FORM SECTION BELOW THE BANNER -->
+<section class="form-section">
+  <div class="form-overlay">
+    <div style="text-align: center; font-weight: bold;">
+      <p style="margin-bottom: 20px; font-size: 1rem;">
+        Get in touch with us for inquiries or assistance. Contact us to explore opportunities, seek guidance, or get answers.
+      </p>
+    </div>
+    {% if name %}
+      <h3 style="color: green; text-align: center;">Thank you: {{ name }}!</h3>
+    {% endif %}
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="name" placeholder="Your Name" required><br>
+      <input type="email" name="email" placeholder="Your Email" required><br>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea><br>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</section>
+<!-- Contact-us content end -->
+
+
+
+
+
+<!-- Footer -->
+<footer class="text-white py-4 mt-5" style="background-color: #1a1a1a; border-top: 1px solid #444;">
+  <div class="container text-center">
+    <p class="mb-1" style="color: #d4af37;">© 2025 Express Gold Limited (UG). All rights reserved.</p>
+    <div>
+      <a href="#" class="text-decoration-none text-white mx-2" style="transition: color 0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='white'">Contact Us</a>
+      |
+      <a href="#" class="text-decoration-none text-white mx-2" style="transition: color 0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='white'">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    // js for closing the small screen button
+    document.addEventListener('click', function (event) {
+    const navbarCollapse = document.getElementById('mainNavbar');
+    const isClickInsideNavbar = navbarCollapse.contains(event.target);
+    const isToggler = event.target.closest('.navbar-toggler');
+
+    if (!isClickInsideNavbar && !isToggler && navbarCollapse.classList.contains('show')) {
+      new bootstrap.Collapse(navbarCollapse).hide();
+    }
+  });
+
+  // js overlay form
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector(".contact-banner form");
+      form.addEventListener("submit", function (e) {
+        alert("Your message has been sent. Thank you!");
+      });
+    });
+
+
+    // navbar
+    // Get elements
+    const contactBar = document.querySelector('.top-contact-bar');
+    const navbar = document.querySelector('.navbar');
+    let prevScrollPos = window.pageYOffset;
+
+    // Event listener for scroll
+    window.onscroll = function () {
+        let currentScrollPos = window.pageYOffset;
+
+        // Check if the user scrolls down
+        if (currentScrollPos > prevScrollPos) {
+        // When scrolling down, shrink both the top contact bar and the navbar
+        contactBar.classList.add('shrink-contact-bar');
+        navbar.classList.add('shrink');
+        } else {
+        // When scrolling up, reset both to normal size
+        contactBar.classList.remove('shrink-contact-bar');
+        navbar.classList.remove('shrink');
+        }
+
+        prevScrollPos = currentScrollPos;
+    };
+</script>
+  
+</body>
+</html>

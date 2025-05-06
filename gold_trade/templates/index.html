@@ -1,0 +1,848 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home|Express Gold Limited (UG)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicon (Browser tab icon) -->
+  <link rel="icon" type="image/png" href="{% static 'gold_trade/img/6.jpg' %}" />
+
+  <!-- Open Graph meta tags for link sharing preview -->
+  <meta property="og:title" content="Express Gold Limited (UG)" />
+  <meta property="og:description" content="Your Trusted Partner in Gold Mining and Trading" />
+  <meta property="og:image" content="https://yourdomain.com/static/gold_trade/img/6.jpg" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+
+    /* navbar */
+    .navbar-nav .nav-link {
+    position: relative;
+    color: #000000;
+    padding: 8px 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #d4af37;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #d4af37;
+  }
+
+  .navbar-nav .nav-link:hover::after {
+    width: 80%;
+  }
+
+
+   /* General Styles for Top Contact Bar */
+    .top-contact-bar {
+    font-size: 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    transition: top 0.3s ease, padding 0.3s ease;
+    }
+
+    .top-contact-bar .contact-item {
+    color: #f5f5f5;
+    padding: 1px 10px;
+    }
+
+    .gold-icon {
+    color: gold;
+    margin-right: 6px;
+    }
+
+    /* Shrink the Top Contact Bar when scrolling down */
+    .shrink-contact-bar {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 0.9em;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+    margin-top: 30px;  /* Add margin to prevent overlap with top contact bar */
+    transition: padding 0.3s ease, height 0.3s ease;
+    }
+
+    .navbar-expand-lg {
+    padding: 20px 0; /* Increased navbar height */
+    }
+
+    .navbar.shrink {
+    padding: 10px 0; /* Shrunk navbar height */
+    transition: padding 0.3s ease;
+    }
+
+    /* Media Queries for Small Screens */
+    @media (max-width: 768px) {
+    /* Add extra padding-top when the screen width is less than or equal to 768px */
+    .navbar {
+        margin-top: 30px; /* Increased space to ensure navbar is not hidden under the contact bar */
+    }
+
+    /* Ensure the Top Contact Bar doesn't overlap with content on mobile */
+    .top-contact-bar {
+        padding-top: 10px;  /* Adjust padding to make it look better on small screens */
+        padding-bottom: 5px; /* Adjust padding */
+    }
+    }
+
+
+
+    /* banners*/
+    .banner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      background-color: #ffffff;
+      position: relative;
+    }
+  
+    .banner-text {
+      flex: 1 1 300px;
+      padding: 20px;
+    }
+  
+    .banner-text h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  
+    .highlight {
+      color:red;
+      font-weight: bold;
+    }
+  
+    .banner-images {
+      flex: 1 1 350px;
+      padding: 20px;
+    }
+  
+    .banner-images img:first-child {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  
+    /* Overlay Image - centered across the whole banner with fly-in effect */
+    .overlay-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(-30px); /* start position */
+      opacity: 0;
+      transition: transform 1.5s ease, opacity 1.5s ease;
+      width: 15%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      z-index: 5;
+    }
+  
+    .overlay-image.fly-in {
+      transform: translate(-50%, -50%) translateY(0); /* end position */
+      opacity: 1;
+    }
+  
+    @media (max-width: 768px) {
+      .banner {
+        flex-direction: column;
+        padding-top: 150px;
+      }
+
+      .banner-images{
+        width: 100%;
+        
+      }
+
+  
+      .overlay-image {
+        width: 60%;
+        max-height: 180px;
+        margin-top: 450px;
+        padding-top: 0;
+        height: 200px;
+      }
+    }
+
+
+    /* tables */
+
+    /* Section background */
+    .blurred-columns-section {
+    padding: 30px 5px 5px ;
+    background-color: #f8f8f8;
+    
+    }
+
+    /* Flex container */
+    .blurred-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 0 20px;
+    }
+
+    /* Individual column */
+    .column {
+    position: relative;
+    width: 450px;
+    height: 500px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    }
+
+    .column:hover {
+    transform: scale(1.03);
+    }
+
+    /* Background image layer */
+    .column::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(2px);
+    z-index: 1;
+    }
+
+    /* Content overlay */
+    .column-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 20px;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 12px;
+    }
+
+    /* Background images */
+    .column-1::before {
+    background-image: url("{% static 'gold_trade/img/4.jpg' %}");
+    }
+
+    .column-2::before {
+    background-image: url("{% static 'gold_trade/img/trade1.jpeg' %}");
+    }
+
+    .column-3::before {
+    background-image: url("{% static 'gold_trade/img/1.JPG' %}");
+    }
+
+    /* Responsive behavior */
+    @media (max-width: 992px) {
+    .column {
+        width: 90%;
+        height: 400px;
+    }
+    }
+
+    @media (max-width: 600px) {
+    .column {
+        width: 100%;
+        height: 350px;
+    }
+
+    .column-content {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+    }
+
+    .gold-icon {
+    color: gold;
+    margin-right: 10px;
+    }
+
+    /* gold rates*/
+   /* Table styling */
+    .table-gold {
+      background-color: #d4af37;
+      color: #ffffff;
+    }
+
+    .table tbody tr:hover {
+      background-color: rgba(255, 215, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .table td, .table th {
+      vertical-align: middle;
+      font-size: 1.05em;
+    }
+
+    @media (max-width: 768px) {
+      .table td, .table th {
+        font-size: 0.95em;
+      }
+      
+      .display-5 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Fly-in Table Animation */
+    .fly-in-table {
+      opacity: 0;
+      transform: translateY(80px);
+      transition: all 1s ease-out;
+    }
+
+    .fly-in-table.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Specific styling for smaller screens */
+    @media (max-width: 767px) {
+      .fly-in-table {
+        opacity: 0;
+        transform: translateY(50px); /* Slightly less vertical movement for small screens */
+        transition: all 1s ease-out;
+      }
+
+      .fly-in-table.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* preloader css */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1.about-heading {
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+
+  h1.about-heading::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 3px;
+    background-color: red;
+    transition: width 0.3s ease;
+  }
+
+  h1.about-heading:hover::after {
+    width: 100%;
+  }
+
+  </style>
+  
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #1a1a1a; z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #d4af37; font-family: 'Segoe UI', sans-serif; text-align: center;">
+
+  <div style="margin-bottom: 20px;">
+    <div class="spinner" style="width: 40px; height: 40px; border: 4px solid #d4af37; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+  </div>
+
+  <h2 style="font-size: 28px; margin-bottom: 10px; animation: pulse 1.5s ease-in-out infinite;">Express Gold Limited (UG)</h2>
+  <p style="font-size: 16px; animation: fadein 2s ease-in-out;">Your Trusted Partner in Gold Mining and Trading</p>
+</div>
+
+
+<!-- Navbar Start -->
+<!-- Top Contact Bar -->
+    <div class="top-contact-bar bg-dark text-light py-1">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center">
+        <div class="contact-item">
+            <i class="fas fa-phone-alt gold-icon"></i> 039 3102928
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-envelope gold-icon"></i> Expressgoldlimited@gmail.com
+        </div>
+        </div>
+    </div>
+  
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light shadow">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}" style="gap: 10px;">
+        <img src="{% static 'gold_trade/img/6.jpg' %}" alt="Logo" style="height: 40px; width: auto;">
+        <div style="display: flex; flex-direction: column;">
+          <strong>Express Gold Limited (UG)</strong>
+          <small style="font-size: 12px; color: #d4af37;">Your Trusted Partner in Gold Mining and Trading</small>
+        </div>
+      </a>
+      
+      <div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" style="margin: 0 auto;">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      
+  
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about" id="aboutLink">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'product' %}">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+          </li>
+        </ul>
+      </div>      
+    </div>
+  </nav>
+  <!-- Navbar End -->
+  
+
+<!-- About Us Section -->
+<section id="about" class="banner">
+  <div class="banner-text" style="text-align: left;">
+    <h1 class="about-heading" style="font-size: 36px; font-weight: 700; color: gold; margin-top: 20px;">
+      About Us
+    </h1>
+    <h2>Valuing your <span class="highlight">Effort</span> and<br> <span class="highlight">Time</span></h2>
+    <p>
+        Express Gold Limited (UG) is a premier gold mining and trading company based in Uganda. <br>With years of expertise in the industry, we specialize in responsible gold mining, refining, <br> and trading, ensuring quality and transparency in every transaction. <br> Our mission is to deliver value to our clients while promoting <br>sustainable practices in the gold industry.
+    </p>
+  </div>
+
+  <!-- Main Image -->
+  <div class="banner-images">
+    <img src="{% static 'gold_trade/img/5.jpg' %}" alt="Main Image">
+  </div>
+
+  <!-- Centered Overlay Image -->
+  <img class="overlay-image" src="{% static 'gold_trade/img/ug.jpeg' %}" alt="Overlay Image">
+</section>
+
+
+
+
+<!-- Gold Rates in Uganda -->
+<section class="py-5 text-white" style="background-image: linear-gradient(rgba(185, 140, 76, 0.9), rgba(77, 54, 42, 0.95)), url(&quot;{% static 'gold_trade/img/.jpeg' %}&quot;); background-size: cover; background-position: center; background-repeat: no-repeat; margin-top: 40px;">
+  <div class="container text-center">
+    <h2 class="display-5 fw-bold mb-4" style="color: yellow;">UG Today's Gold Rates in Uganda</h2>
+    <p class="lead mb-4">Stay updated with the latest gold prices per gram in Ugandan Shillings (UGX).</p>
+
+    <!-- Animated Gold Rates Table -->
+    <div class="table-responsive fly-in-table" id="goldRatesTable">
+      <table class="table table-bordered table-dark table-striped text-center mb-0 rounded">
+        <thead class="table-gold text-uppercase">
+          <tr>
+            <th>Karat</th>
+            <th>Price per Gram (UGX)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>24K</td><td>343,780.42</td></tr>
+          <tr><td>22K</td><td>315,132.05</td></tr>
+          <tr><td>21K</td><td>300,807.87</td></tr>
+          <tr><td>18K</td><td>257,835.32</td></tr>
+          <tr><td>14K</td><td>201,111.55</td></tr>
+          <tr><td>10K</td><td>143,356.44</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-4 fst-italic" style="color: yellow;">💡 Prices are updated regularly based on global and local market trends.</p>
+  </div>
+</section>
+
+<!-- Space between blurred columns and gold rates section -->
+<div class="my-5"></div> <!-- Adds vertical space -->
+
+<!--table-->
+<div>
+    <section>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 40px; padding: 0 20px;">
+            <h2 style="font-size: 2em; color: gold;">Nature’s Gift to Man</h2>
+            <p style="font-size: 1.1em; color: #444;">
+              From the depths of the earth to the hands of artisans and investors, gold is one of nature's most precious gifts. 
+              Through the rigorous journey of mining, refining, and trading, mankind transforms this raw resource into value, beauty, and economic power.
+            </p>
+        </div>
+    </section>
+    <section class="blurred-columns-section">
+        <div class="blurred-columns">
+        
+            <div class="column column-1">
+                <div class="column-content">
+                    <div>
+                    <h3 style="color: yellow;"><i class="fas fa-hammer gold-icon"></i> Gold Mining</h3>
+                    <p>
+                        We extract raw gold using moern techniques, ensuring efficiency, safety, and environmental responsibility throughout the mining process.
+                    </p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="column column-3">
+                <div class="column-content">
+                    <div>
+                    <h3 style="color: yellow;"><i class="fas fa-fire gold-icon"></i> Gold Refining</h3>
+                    <p>
+                        Through precise refining techniques, we convert raw gold into high-purity bullion, meeting both industrial and investment-grade standards.
+                    </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column column-2">
+                <div class="column-content">
+                    <div>
+                    <h3 style="color: yellow;"><i class="fas fa-coins gold-icon"></i> Gold Trading</h3>
+                    <p>
+                        Our gold trading services connect markets, offering transparent pricing, secure transactions, and a trustworthy gold exchange platform.
+                    </p>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </section>
+</div>
+
+
+<!-- Space between blurred columns and gold rates section -->
+<div class="my-5"></div> <!-- Adds vertical space -->
+
+
+<!-- Gold Trading Services -->
+<!-- Gold Trading Services -->
+<section class="py-5 text-bark" style="background-image: url(&quot;{% static 'gold_trade/img/beats.jpeg' %}&quot;); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="container">
+    <h2 class="text-center display-5 fw-bold mb-5" style="color: #d4af37;">Our Gold Trading Services</h2>
+    <div class="row g-4">
+
+      <!-- Service Card -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/buy.jpeg' %}" alt="Gold Buying & Selling"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">🟡 Gold Buying & Selling</h5>
+          <p style="margin-bottom: 0;">We offer instant cash for your gold — whether it's bars, coins, or jewelry — at competitive market rates updated daily.</p>
+        </div>
+      </div>
+
+      <!-- Price Updates -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/price.jpeg' %}" alt="Gold Price Updates"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">📊 Gold Price Updates</h5>
+          <p style="margin-bottom: 0;">Stay informed with real-time gold prices for 24K, 22K, and 18K gold — including trends, charts, and global insights.</p>
+        </div>
+      </div>
+
+      <!-- Refining & Assaying -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/clean.jpeg' %}" alt="Refining & Assaying"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">🔬 Refining & Assaying</h5>
+          <p style="margin-bottom: 0;">We provide gold purity testing, melting, and refining with certification and hallmarking for absolute trust and quality.</p>
+        </div>
+      </div>
+
+      <!-- Secure Storage -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/storage.jpeg' %}" alt="Secure Gold Storage"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">🏦 Secure Storage</h5>
+          <p style="margin-bottom: 0;">Store your gold safely with our insured vault solutions, featuring 24/7 surveillance and access-controlled private lockers.</p>
+        </div>
+      </div>
+
+      <!-- Investment Options -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/invert.jpeg' %}" alt="Investment Options"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">📈 Investment Options</h5>
+          <p style="margin-bottom: 0;">Grow your wealth through digital gold accounts, savings plans, and expert-guided investment portfolios.</p>
+        </div>
+      </div>
+
+      <!-- Export & Import -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/chat.jpeg' %}" alt="Export & Import"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">📘 Expert Consultation</h5>
+          <p style="margin-bottom: 0;">Get personalized advice on gold investments, risk management, and bulk business trading from our experienced consultants.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="my-5"></div> <!-- Adds vertical space -->
+
+
+
+<!-- Footer -->
+<footer class="text-white py-4 mt-5" style="background-color: #1a1a1a; border-top: 1px solid #444;">
+  <div class="container text-center">
+    <p class="mb-1" style="color: #d4af37;">© 2025 Express Gold Limited (UG). All rights reserved.</p>
+    <div>
+      <a href="#" class="text-decoration-none text-white mx-2" style="transition: color 0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='white'">Contact Us</a>
+      |
+      <a href="#" class="text-decoration-none text-white mx-2" style="transition: color 0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='white'">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+  // js for closing the small screen button
+  document.addEventListener('click', function (event) {
+    const navbarCollapse = document.getElementById('mainNavbar');
+    const isClickInsideNavbar = navbarCollapse.contains(event.target);
+    const isToggler = event.target.closest('.navbar-toggler');
+
+    if (!isClickInsideNavbar && !isToggler && navbarCollapse.classList.contains('show')) {
+      new bootstrap.Collapse(navbarCollapse).hide();
+    }
+  });
+
+  //js for about us page content display
+  document.addEventListener("DOMContentLoaded", function () {
+    // Smooth scroll
+    document.querySelectorAll('a.nav-link[href^="#"]').forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+
+        // Update active class
+        document.querySelectorAll(".nav-link").forEach(nav => nav.classList.remove("active-section"));
+        this.classList.add("active-section");
+      });
+    });
+
+    // Optional scroll highlight on load (when refreshing and already at section)
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute("id");
+        const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+        if (entry.isIntersecting && navLink) {
+          document.querySelectorAll(".nav-link").forEach(nav => nav.classList.remove("active-section"));
+          navLink.classList.add("active-section");
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.6,
+    });
+
+    document.querySelectorAll("section[id]").forEach(section => {
+      observer.observe(section);
+    });
+  });
+
+  // js overlay form
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector('.form-overlay');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          form.classList.add('visible');
+        } else {
+          form.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    observer.observe(form);
+  });
+
+
+  // js code for the preloader
+    const MIN_PRELOADER_TIME = 3500; // 2 seconds
+
+    const start = Date.now();
+    window.addEventListener("load", function () {
+      const preloader = document.getElementById("preloader");
+      const timeElapsed = Date.now() - start;
+      const remainingTime = Math.max(0, MIN_PRELOADER_TIME - timeElapsed);
+
+      setTimeout(() => {
+        preloader.style.opacity = "0";
+        setTimeout(() => preloader.style.display = "none", 500);
+      }, remainingTime);
+    });
+
+    // JS for Gold Rates Table Animation
+    document.addEventListener("DOMContentLoaded", () => {
+      const table = document.querySelector('#goldRatesTable');
+
+      if (!table) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          } else {
+            entry.target.classList.remove("visible");
+          }
+        });
+      }, {
+        threshold: window.innerWidth <= 768 ? 0.1 : 0.2  // Slightly lower threshold for small screens
+      });
+
+      observer.observe(table);
+    });
+
+
+    // js for overlay image
+    document.addEventListener('DOMContentLoaded', () => {
+      const image = document.querySelector('.overlay-image');
+  
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            image.classList.add('fly-in');
+          } else {
+            image.classList.remove('fly-in'); // Remove so it can animate again on re-entry
+          }
+        });
+      }, {
+        threshold: 0.5, // Triggers when 50% of the image is visible
+      });
+  
+      if (image) {
+        observer.observe(image);
+      }
+    });
+
+    // card js code
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll('.trade-card');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible'); // optional: allows re-trigger
+        }
+      });
+    }, { threshold: 0.3 });
+
+    cards.forEach(card => observer.observe(card));
+  });
+
+    // navbar
+    // Get elements
+    const contactBar = document.querySelector('.top-contact-bar');
+    const navbar = document.querySelector('.navbar');
+    let prevScrollPos = window.pageYOffset;
+
+    // Event listener for scroll
+    window.onscroll = function () {
+        let currentScrollPos = window.pageYOffset;
+
+        // Check if the user scrolls down
+        if (currentScrollPos > prevScrollPos) {
+        // When scrolling down, shrink both the top contact bar and the navbar
+        contactBar.classList.add('shrink-contact-bar');
+        navbar.classList.add('shrink');
+        } else {
+        // When scrolling up, reset both to normal size
+        contactBar.classList.remove('shrink-contact-bar');
+        navbar.classList.remove('shrink');
+        }
+
+        prevScrollPos = currentScrollPos;
+    };
+</script>
+  
+  
+</body>
+</html>

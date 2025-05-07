@@ -94,16 +94,45 @@
     transition: padding 0.3s ease;
   }
 
-  @media (max-width: 768px) {
-    .navbar {
-      margin-top: 30px;
+    /* Reduce spacing between contact items on small screens */
+    @media (max-width: 768px) {
+      .top-contact-bar .contact-item {
+        margin-right: 5px; /* Reduce space between items */
+        padding: 4px 0;     /* Reduce top/bottom padding */
+        font-size: 10px;    /* Optional: reduce text size */
+      }
+
+      .top-contact-bar .container {
+        gap: 5px; /* If you're using flex-wrap and want to reduce vertical spacing */
+      }
+
+      /* Ensure the Top Contact Bar doesn't overlap with content on mobile */
+      .top-contact-bar {
+          padding-top: 10px;  /* Adjust padding to make it look better on small screens */
+          padding-bottom: 5px; /* Adjust padding */
+      }
+      
+    }
+   
+    /* navbar button*/
+    @media (max-width: 768px) {
+      .navbar-toggler {
+        display: block;
+        margin: 0 auto;           /* Horizontally center */
+        padding: 10px 20px;       /* Top-bottom 10px, left-right 20px */
+        border: none;
+      }
     }
 
-    .top-contact-bar {
-      padding-top: 5px;
-      padding-bottom: 5px;
+    @media (max-width: 768px) {
+      .brand-name {
+        font-size: 14px;
+      }
+
+      .brand-tagline {
+        font-size: 10px;
+      }
     }
-  }
 
     /* css for products*/
     .gold-heading {
@@ -148,7 +177,7 @@
 
     }
     }
-    </style>
+</style>
  
 </head>
 <body>
@@ -172,7 +201,7 @@
             <img src="{% static 'gold_trade/img/6.jpg' %}" alt="Logo" style="height: 40px; width: auto;">
             <div style="display: flex; flex-direction: column;">
             <strong>Express Gold Limited (UG)</strong>
-            <small style="font-size: 12px; color: #d4af37;">Your Trusted Partner in Gold Mining and Trading</small>
+            <small style="font-size: 12px; color: #d4af37;">Your Trusted Partner in  Gold Mining and Trading</small>
             </div>
         </a>
 
@@ -240,7 +269,97 @@
     </div>
 </section>
 
+<div class="my-5"></div> <!-- Adds vertical space -->
 
+<!-- Gold Trading Services -->
+<!-- Gold Trading Services -->
+<section class="py-5 text-bark" style="background-image: url(&quot;{% static 'gold_trade/img/beats.jpeg' %}&quot;); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="container">
+    <h2 class="text-center display-5 fw-bold mb-5" style="color: #d4af37;">Our Gold Trading Services</h2>
+    <div class="row g-4">
+
+      <!-- Service Card -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/buy.jpeg' %}" alt="Gold Buying & Selling"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">🟡 Gold Buying & Selling</h5>
+          <p style="margin-bottom: 0;">We offer instant cash for your gold — whether it's bars, coins, or jewelry — at competitive market rates updated daily.</p>
+        </div>
+      </div>
+
+      <!-- Price Updates -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/Price.jpeg' %}" alt="Gold Price Updates"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">📊 Gold Price Updates</h5>
+          <p style="margin-bottom: 0;">Stay informed with real-time gold prices for 24K, 22K, and 18K gold — including trends, charts, and global insights.</p>
+        </div>
+      </div>
+
+      <!-- Refining & Assaying -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/clean.jpeg' %}" alt="Refining & Assaying"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">🔬 Refining & Assaying</h5>
+          <p style="margin-bottom: 0;">We provide gold purity testing, melting, and refining with certification and hallmarking for absolute trust and quality.</p>
+        </div>
+      </div>
+
+      <!-- Secure Storage -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/storage.jpeg' %}" alt="Secure Gold Storage"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">🏦 Secure Storage</h5>
+          <p style="margin-bottom: 0;">Store your gold safely with our insured vault solutions, featuring 24/7 surveillance and access-controlled private lockers.</p>
+        </div>
+      </div>
+
+      <!-- Investment Options -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/invert.jpeg' %}" alt="Investment Options"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">📈 Investment Options</h5>
+          <p style="margin-bottom: 0;">Grow your wealth through digital gold accounts, savings plans, and expert-guided investment portfolios.</p>
+        </div>
+      </div>
+
+      <!-- Export & Import -->
+      <div class="col-md-6 col-lg-4">
+        <div class="p-3 rounded h-100"
+          style="background-color: #ffffff;  transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)'"
+          onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+          <img src="{% static 'gold_trade/img/chat.jpeg' %}" alt="Export & Import"
+            style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+          <h5 class="fw-bold mt-3">📘 Expert Consultation</h5>
+          <p style="margin-bottom: 0;">Get personalized advice on gold investments, risk management, and bulk business trading from our experienced consultants.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="my-5"></div> <!-- Adds vertical space -->
 
 
 <!-- Footer -->

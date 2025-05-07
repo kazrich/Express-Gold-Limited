@@ -94,16 +94,45 @@
     transition: padding 0.3s ease;
   }
 
-  @media (max-width: 768px) {
-    .navbar {
-      margin-top: 30px;
+    /* Reduce spacing between contact items on small screens */
+    @media (max-width: 768px) {
+      .top-contact-bar .contact-item {
+        margin-right: 5px; /* Reduce space between items */
+        padding: 4px 0;     /* Reduce top/bottom padding */
+        font-size: 10px;    /* Optional: reduce text size */
+      }
+
+      .top-contact-bar .container {
+        gap: 5px; /* If you're using flex-wrap and want to reduce vertical spacing */
+      }
+
+      /* Ensure the Top Contact Bar doesn't overlap with content on mobile */
+      .top-contact-bar {
+          padding-top: 10px;  /* Adjust padding to make it look better on small screens */
+          padding-bottom: 5px; /* Adjust padding */
+      }
+      
+    }
+   
+    /* navbar button*/
+    @media (max-width: 768px) {
+      .navbar-toggler {
+        display: block;
+        margin: 0 auto;           /* Horizontally center */
+        padding: 10px 20px;       /* Top-bottom 10px, left-right 20px */
+        border: none;
+      }
     }
 
-    .top-contact-bar {
-      padding-top: 5px;
-      padding-bottom: 5px;
+    @media (max-width: 768px) {
+      .brand-name {
+        font-size: 14px;
+      }
+
+      .brand-tagline {
+        font-size: 10px;
+      }
     }
-  }
 
 /* =========================== 
     CONTACT BANNER CONTAINER
@@ -317,6 +346,7 @@
 <section class="form-section">
   <div class="form-overlay">
     <div style="text-align: center; font-weight: bold;">
+      <h1>Inqury Form</h1>
       <p style="margin-bottom: 20px; font-size: 1rem;">
         Get in touch with us for inquiries or assistance. Contact us to explore opportunities, seek guidance, or get answers.
       </p>
@@ -329,6 +359,12 @@
       <input type="text" name="name" placeholder="Your Name" required><br>
       <input type="email" name="email" placeholder="Your Email" required><br>
       <textarea name="message" rows="4" placeholder="Your Message" required></textarea><br>
+
+      <div style="text-align: center; font-weight: bold;">
+        <p style="margin-bottom: 20px; font-size: 1rem;">
+          client, You information is safe with us
+        </p>
+      </div>
       <button type="submit">Send</button>
     </form>
   </div>

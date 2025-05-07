@@ -177,6 +177,20 @@
 
     }
     }
+
+    /* transition for why us*/
+    .fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Trigger animation when visible */
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 </style>
  
 </head>
@@ -263,17 +277,15 @@
       <div class="mt-5 fade-in">
         <h3 class="text-gold">Why Choose Express Gold Limited (UG)?</h3>
         <p class="lead">Certified gold, transparent pricing, and top-tier client service. We are your partner in success.</p>
-      </div>
-
+      </div>      
 
     </div>
 </section>
 
-<div class="my-5"></div> <!-- Adds vertical space -->
 
 <!-- Gold Trading Services -->
 <!-- Gold Trading Services -->
-<section class="py-5 text-bark" style="background-image: url(&quot;{% static 'gold_trade/img/beats.jpeg' %}&quot;); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<section class="py-5 text-bark" >
   <div class="container">
     <h2 class="text-center display-5 fw-bold mb-5" style="color: #d4af37;">Our Gold Trading Services</h2>
     <div class="row g-4">
@@ -377,6 +389,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+
+  // js code for why us
+  document.addEventListener('DOMContentLoaded', function () {
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show'); // Remove to re-trigger
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
+  });
 
     // js code for products content
     document.addEventListener("DOMContentLoaded", function () {

@@ -501,14 +501,14 @@
 
 
 <!-- Gold Rates in Uganda -->
-<section class="py-5 text-white" style="background-image: linear-gradient(rgba(185, 140, 76, 0.9), rgba(77, 54, 42, 0.95)), url(&quot;{% static 'gold_trade/img/.jpeg' %}&quot;); background-size: cover; background-position: center; background-repeat: no-repeat; margin-top: 40px;">
+<section class="py-5 text-white" style="background-image: linear-gradient(rgba(6, 6, 14, 0.9), rgba(3, 55, 85, 0.95)), url(&quot;{% static 'gold_trade/img/beat.gif' %}&quot;); background-size: cover; background-position: center; background-repeat: no-repeat; margin-top: 40px;">
   <div class="container text-center">
     <h2 class="display-5 fw-bold mb-4" style="color: yellow;">UG Today's Gold Rates in Uganda</h2>
     <p class="lead mb-4">Stay updated with the latest gold prices per gram in Ugandan Shillings (UGX).</p>
 
     <!-- Animated Gold Rates Table -->
-    <div class="table-responsive fly-in-table" id="goldRatesTable">
-      <table class="table table-bordered table-dark table-striped text-center mb-0 rounded">
+    <div id="goldRatesTable" style="border-radius: 20px;" class="table-responsive fly-in-table" >
+      <table class="table table-striped text-center mb-0 rounded">
         <thead class="table-gold text-uppercase">
           <tr>
             <th>Karat</th>
@@ -681,7 +681,7 @@
 
 
   // js code for the preloader
-    const MIN_PRELOADER_TIME = 3500; // 2 seconds
+    const MIN_PRELOADER_TIME = 3500; // 3.5 seconds
 
     const start = Date.now();
     window.addEventListener("load", function () {

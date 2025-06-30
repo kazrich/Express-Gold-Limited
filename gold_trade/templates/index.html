@@ -217,157 +217,179 @@
     }
 
 
-    /* tables */
+/* === GOLD RATES TABLE STYLING === */
 
-    /* Section background */
-    .blurred-columns-section {
-    padding: 30px 5px 5px ;
-    background-color: #f8f8f8;
-    
-    }
+/* Shimmer effect on table rows */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
 
-    /* Flex container */
-    .blurred-columns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin: 0 20px;
-    }
+.table tbody tr:hover {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 215, 0, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 215, 0, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 8px;
+}
 
-    /* Individual column */
-    .column {
-    position: relative;
-    width: 450px;
-    height: 500px;
-    flex-shrink: 0;
-    overflow: hidden;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-    }
 
-    .column:hover {
-    transform: scale(1.03);
-    }
+/* Table Header */
+.table-gold {
+  background-color: #d4af37; /* Rich gold tone */
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 
-    /* Background image layer */
-    .column::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(2px);
-    z-index: 1;
-    }
+/* Table Rows */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
 
-    /* Content overlay */
-    .column-content {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    padding: 20px;
-    color: whitesmoke;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 1.3em;
-    font-weight: bold;
-    border-radius: 12px;
-    }
+.table tbody tr:hover {
+  background-color: rgba(255, 215, 0, 0.2);
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}
 
-    /* Background images */
-    .column-1::before {
-    background-image: url("{% static 'gold_trade/img/4.jpg' %}");
-    }
+/* Table Cells */
+.table td, .table th {
+  vertical-align: middle;
+  font-size: 1.05em;
+  border: none;
+  padding: 1rem;
+}
 
-    .column-2::before {
-    background-image: url("{% static 'gold_trade/img/1.JPG' %}");
-    }
+/* Responsive Table Text */
+@media (max-width: 768px) {
+  .table td, .table th {
+    font-size: 0.95em;
+  }
 
-    .column-3::before {
-    background-image: url("{% static 'gold_trade/img/trade1.jpeg' %}");
-    }
+  .display-5 {
+    font-size: 1.8rem;
+  }
+}
 
-    /* Responsive behavior */
-    @media (max-width: 992px) {
-    .column {
-        width: 90%;
-        height: 400px;
-    }
-    }
+/* Fly-in Animation */
+.fly-in-table {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 1s ease-out;
+}
 
-    @media (max-width: 600px) {
-    .column {
-        width: 100%;
-        height: 350px;
-    }
+.fly-in-table.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .column-content {
-        font-size: 1.1em;
-        padding: 15px;
-    }
-    }
+@media (max-width: 767px) {
+  .fly-in-table {
+    transform: translateY(50px);
+  }
+}
 
-    .gold-icon {
-    color: gold;
-    margin-right: 10px;
-    }
+/* Icon Styling */
+.gold-icon {
+  color: gold;
+  margin-right: 10px;
+}
 
-    /* gold rates*/
-   /* Table styling */
-    .table-gold {
-      background-color: #d4af37;
-      color: #ffffff;
-    }
+/* === BLURRED COLUMNS SECTION === */
 
-    .table tbody tr:hover {
-      background-color: rgba(255, 215, 0, 0.2);
-      transition: background-color 0.3s ease;
-    }
+.blurred-columns-section {
+  padding: 30px 5px 5px;
+  background-color: #f8f8f8;
+}
 
-    .table td, .table th {
-      vertical-align: middle;
-      font-size: 1.05em;
-    }
+.blurred-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 20px;
+}
 
-    @media (max-width: 768px) {
-      .table td, .table th {
-        font-size: 0.95em;
-      }
-      
-      .display-5 {
-        font-size: 1.8rem;
-      }
-    }
+.column {
+  position: relative;
+  width: 450px;
+  height: 500px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
 
-    /* Fly-in Table Animation */
-    .fly-in-table {
-      opacity: 0;
-      transform: translateY(80px);
-      transition: all 1s ease-out;
-    }
+.column:hover {
+  transform: scale(1.03);
+}
 
-    .fly-in-table.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.column::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  z-index: 1;
+}
 
-    /* Specific styling for smaller screens */
-    @media (max-width: 767px) {
-      .fly-in-table {
-        opacity: 0;
-        transform: translateY(50px); /* Slightly less vertical movement for small screens */
-        transition: all 1s ease-out;
-      }
+.column-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 20px;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+  border-radius: 12px;
+}
 
-      .fly-in-table.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.column-1::before {
+  background-image: url("{% static 'gold_trade/img/4.jpg' %}");
+}
+
+.column-2::before {
+  background-image: url("{% static 'gold_trade/img/1.JPG' %}");
+}
+
+.column-3::before {
+  background-image: url("{% static 'gold_trade/img/trade1.jpeg' %}");
+}
+
+@media (max-width: 992px) {
+  .column {
+    width: 90%;
+    height: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .column {
+    width: 100%;
+    height: 350px;
+  }
+
+  .column-content {
+    font-size: 1.1em;
+    padding: 15px;
+  }
+}
+
 
     /* preloader css */
     @keyframes spin {
@@ -516,12 +538,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>24K</td><td>343,780.42</td></tr>
-          <tr><td>22K</td><td>315,132.05</td></tr>
-          <tr><td>21K</td><td>300,807.87</td></tr>
-          <tr><td>18K</td><td>257,835.32</td></tr>
-          <tr><td>14K</td><td>201,111.55</td></tr>
-          <tr><td>10K</td><td>143,356.44</td></tr>
+          <tr><td><i class="fas fa-gem gold-icon"></i>24K</td><td>343,780.42</td></tr>
+          <tr><td><i class="fas fa-gem gold-icon"></i>22K</td><td>315,132.05</td></tr>
+          <tr><td><i class="fas fa-gem gold-icon"></i>21K</td><td>300,807.87</td></tr>
+          <tr><td><i class="fas fa-gem gold-icon"></i>18K</td><td>257,835.32</td></tr>
+          <tr><td><i class="fas fa-gem gold-icon"></i>14K</td><td>201,111.55</td></tr>
+          <tr><td><i class="fas fa-gem gold-icon"></i>10K</td><td>143,356.44</td></tr>
         </tbody>
       </table>
     </div>
@@ -695,26 +717,48 @@
       }, remainingTime);
     });
 
-    // JS for Gold Rates Table Animation
+    // JS for Gold Rates Table Animation (Responsive & Consistent)
     document.addEventListener("DOMContentLoaded", () => {
       const table = document.querySelector('#goldRatesTable');
 
       if (!table) return;
 
+      const rows = table.querySelectorAll("tbody tr");
+
+      // Prepare rows for animation
+      rows.forEach((row, index) => {
+        row.style.opacity = "0";
+        row.style.transform = "translateY(20px)";
+        row.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+      });
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+
+            // Animate rows in sequence
+            rows.forEach(row => {
+              row.style.opacity = "1";
+              row.style.transform = "translateY(0)";
+            });
           } else {
             entry.target.classList.remove("visible");
+
+            // Reset rows for re-animation
+            rows.forEach(row => {
+              row.style.opacity = "0";
+              row.style.transform = "translateY(20px)";
+            });
           }
         });
       }, {
-        threshold: window.innerWidth <= 768 ? 0.1 : 0.2  // Slightly lower threshold for small screens
+        threshold: 0.1 // Unified threshold for all screen sizes
       });
 
       observer.observe(table);
     });
+
 
 
     // js for overlay image
